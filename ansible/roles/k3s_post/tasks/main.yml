@@ -1,4 +1,15 @@
 ---
+- name: Copy k3sup generated kubeconfig to user home
+  copy:
+    mode: 0600
+    src: "{{ playbook_dir }}/kubeconfig"
+    dest: ~/.kube/config
+
+- name: Ansible remove file kubeconfig
+  file:
+    path: "{{ playbook_dir }}/kubeconfig"
+    state: absent
+
 - name: Create docker-registry secret
   run_once: true
   kubernetes.core.k8s:

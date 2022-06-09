@@ -100,12 +100,3 @@
   become: false
   when: inventory_hostname in groups['k3s_workers']
   delegate_to: localhost
-
-- name: Copy k3sup generated kubeconfig to user home
-  run_once: true
-  when: inventory_hostname in groups['k3s_controlplane']
-  delegate_to: localhost
-  copy:
-    mode: 0600
-    src: kubeconfig
-    dest: ~/.kube/config
