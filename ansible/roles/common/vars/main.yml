@@ -1,0 +1,8 @@
+---
+apt:
+  gpg:
+    - https://download.docker.com/linux/ubuntu/gpg
+  repositories:
+    - "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | lower }} stable"
+  packages:
+    - net-tools

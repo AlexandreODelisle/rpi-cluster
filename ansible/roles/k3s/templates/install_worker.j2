@@ -1,0 +1,10 @@
+
+#!/bin/bash
+k3sup join --k3s-version {{ k3s_version  }} \
+    --ip {{ ansible_host }} \
+    --server-ip {{ controlplane_ip }}  \
+    --user '{{ k3s_user }}'  \
+    --ssh-key '{{ k3s_private_key }} '\
+    --server \
+    --k3s-extra-args '--flannel-iface {{ cluster_iface }} --no-deploy=traefik --disable servicelb --advertise-address={{ ansible_host }} --node-ip={{ ansible_host }} --node-external-ip={{ ansible_host }}'
+sleep 10

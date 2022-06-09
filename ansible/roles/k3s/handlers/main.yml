@@ -1,0 +1,20 @@
+---
+- name: Do an echo
+  debug: msg="This will be printed"
+  notify:
+    - eboot VM
+
+- name: Reboot VM
+  become: true
+  command: "reboot"
+  async: 1
+  poll: 0
+  notify:
+    - Wait for reboot
+
+- name: Wait for reboot
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300

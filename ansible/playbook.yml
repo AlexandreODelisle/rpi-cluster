@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+  - common
+  - k3s
+- hosts: localhost
+  roles:
+  - k3s_post

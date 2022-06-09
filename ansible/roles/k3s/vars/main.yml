@@ -1,0 +1,8 @@
+---
+k3s_version: v1.24.1-rc3+k3s1
+k3s_user: ubuntu
+k3s_private_key: /home/adelisle/.ssh/id_ecdsa
+apt:
+  packages:
+    - jq
+    - linux-modules-extra-raspi

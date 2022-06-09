@@ -1,0 +1,17 @@
+---
+all:
+  children:
+    k3s_controlplane:
+      hosts:
+        controlplane1:
+          ansible_host: 192.168.10.100
+    k3s_workers:
+      hosts:
+        worker1:
+          ansible_host: 192.168.10.200
+        worker2:
+          ansible_host: 192.168.10.202
+  vars:
+    ansible_user: ubuntu
+    cluster_iface: eth0
+    controlplane_ip: 192.168.10.100

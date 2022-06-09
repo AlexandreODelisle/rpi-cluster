@@ -1,0 +1,14 @@
+---
+- name: Create docker-registry secret
+  run_once: true
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      type: kubernetes.io/dockerconfigjson
+      metadata:
+        name: "docker-registry"
+        namespace: "default"
+      data:
+        .dockerconfigjson: "{{ lookup('file', '~/.docker/config.json') | b64encode }}"
