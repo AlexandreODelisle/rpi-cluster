@@ -21,5 +21,5 @@
   become: true
   apt:
     pkg: "{{ apt.packages }}"
-    state: latest
+    state: latest # noqa package-latest
     update_cache: true

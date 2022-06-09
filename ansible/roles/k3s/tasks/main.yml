@@ -2,6 +2,7 @@
 - name: Create HostName file
   become: true
   copy:
+    mode: 0644
     dest: "/etc/hostname"
     content: |
       {{ inventory_hostname }}
@@ -11,7 +12,7 @@
   become: true
   apt:
     pkg: "{{ apt.packages }}"
-    state: latest
+    state: latest # noqa package-latest
     update_cache: true
   register: change_packages
 
